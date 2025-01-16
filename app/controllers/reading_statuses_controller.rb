@@ -2,13 +2,13 @@ class ReadingStatusesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_reading_status, only: [:update, :destroy]
 
-  # GET /api/v1/reading_statuses
+  # GET /reading_statuses
   def index
     reading_statuses = current_user.reading_statuses
     render json: reading_statuses, status: :ok
   end
 
-  # POST /api/v1/reading_statuses
+  # POST /reading_statuses
   def create
     reading_status = current_user.reading_statuses.new(reading_status_params)
     if reading_status.save
@@ -18,7 +18,7 @@ class ReadingStatusesController < ApplicationController
     end
   end
 
-  # PATCH /api/v1/reading_statuses/:id
+  # PATCH /reading_statuses/:id
   def update
     if @reading_status.update(reading_status_params)
       render json: @reading_status, status: :ok
@@ -27,7 +27,7 @@ class ReadingStatusesController < ApplicationController
     end
   end
 
-  # DELETE /api/v1/reading_statuses/:id
+  # DELETE /reading_statuses/:id
   def destroy
     @reading_status.destroy
     head :no_content
