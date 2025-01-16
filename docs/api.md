@@ -112,6 +112,25 @@ Authorization: Bearer <token>
     }
 ]
 ```
+### Просмотр статуса
+
+**Endpoint:** `GET /reading_statuses/:id`
+id - это id самого статуса
+
+Ответ:
+
+```
+{
+    "id": 5,
+    "user_id": 2,
+    "isbn": "1488",
+    "status": "read",
+    "created_at": "2025-01-16T17:06:17.386Z",
+    "updated_at": "2025-01-16T17:06:17.386Z"
+}
+```
+
+
 ### Создание нового статуса
 
 **Endpoint:** `POST /reading_statuses`
@@ -142,7 +161,6 @@ Authorization: Bearer <token>
 ### Обновление статуса
 
 **Endpoint:** `PATCH /reading_statuses/:id`
-id - это id самого статуса
 
 **Body:**
 ```
@@ -169,5 +187,113 @@ id - это id самого статуса
 **Endpoint:** `DELETE /reading_statuses/:id`
 id - это id самого статуса
 
+
+Ответ: 204 No Content
+
+## Comments
+
+### Все комменты юзера
+
+**Endpoint:**
+`GET /comments`
+
+**Headers:**
+```
+Authorization: Bearer <token>
+```
+Ответ:
+```
+[
+    {
+        "id": 1,
+        "user_id": 4,
+        "isbn": "9780140449334",
+        "content": "govno",
+        "created_at": "2025-01-16T17:37:54.018Z",
+        "updated_at": "2025-01-16T17:43:45.419Z"
+    },
+    {
+        "id": 3,
+        "user_id": 4,
+        "isbn": "d23e2e",
+        "content": "nice",
+        "created_at": "2025-01-16T17:41:55.866Z",
+        "updated_at": "2025-01-16T17:41:55.866Z"
+    }
+]
+```
+### Просмотр коммента
+
+**Endpoint:** `GET /comments/:id`
+id - это id самого коммента
+
+Ответ:
+
+```
+{
+    "id": 3,
+    "user_id": 4,
+    "isbn": "d23e2e",
+    "content": "nice",
+    "created_at": "2025-01-16T17:41:55.866Z",
+    "updated_at": "2025-01-16T17:41:55.866Z"
+}
+```
+
+
+### Создание нового коммента
+
+**Endpoint:** `POST /comments`
+
+**Body:**
+```
+{
+  "comment": {
+    "isbn": "d23e2e",
+    "content": "norm"
+  }
+}
+```
+
+Ответ:
+
+```
+{
+    "id": 3,
+    "user_id": 4,
+    "isbn": "d23e2e",
+    "content": "norm",
+    "created_at": "2025-01-16T17:41:55.866Z",
+    "updated_at": "2025-01-16T17:41:55.866Z"
+}
+```
+
+### Обновление коммента
+
+**Endpoint:** `PATCH /comments/:id`
+
+**Body:**
+```
+{
+  "comment": {
+    "content": "ne norm"
+  }
+}
+```
+
+Ответ:
+
+```
+{
+    "user_id": 4,
+    "content": "ne norm",
+    "id": 3,
+    "isbn": "d23e2e",
+    "created_at": "2025-01-16T17:41:55.866Z",
+    "updated_at": "2025-01-16T17:56:35.026Z"
+}
+```
+### Удаление коммента
+**Endpoint:** `DELETE /comments/:id`
 
 Ответ: 204 No Content
