@@ -8,4 +8,6 @@ Rails.application.routes.draw do
                sessions: 'users/sessions',
                registrations: 'users/registrations'
              }
+
+  resources :reading_statuses, only: [:index, :create, :update, :destroy]
 end
