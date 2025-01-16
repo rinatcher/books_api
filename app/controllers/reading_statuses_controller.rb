@@ -1,11 +1,16 @@
 class ReadingStatusesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_reading_status, only: [:update, :destroy]
+  before_action :set_reading_status, only: [:show, :update, :destroy]
 
   # GET /reading_statuses
   def index
     reading_statuses = current_user.reading_statuses
     render json: reading_statuses, status: :ok
+  end
+
+  # GET /reading_statuses/:id
+  def show
+    render json: @reading_status, status: :ok
   end
 
   # POST /reading_statuses

@@ -9,5 +9,6 @@ Rails.application.routes.draw do
                registrations: 'users/registrations'
              }
 
-  resources :reading_statuses, only: [:index, :create, :update, :destroy]
+  resources :reading_statuses, only: [:index, :show, :create, :update, :destroy]
+  resources :comments, only: [:index, :show, :create, :update, :destroy]
 end
