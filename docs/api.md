@@ -306,3 +306,109 @@ id - это id самого коммента
 **Endpoint:** `DELETE /comments/:id`
 
 Ответ: 204 No Content
+
+## Reviews
+
+### Все оценки для текущего юзера
+
+**Endpoints:**
+`GET /reviews` 
+
+**Headers:**
+```
+Authorization: Bearer <token>
+```
+Ответ:
+```
+[
+    {
+        "id": 1,
+        "isbn": "9781234567890",
+        "rating": 5,
+        "user_id": 4,
+        "created_at": "2025-01-17T14:44:30.890Z",
+        "updated_at": "2025-01-17T14:44:30.890Z",
+        "user_email": "test34@test.com"
+    },
+    {
+        "id": 4,
+        "isbn": "1234",
+        "rating": 4,
+        "user_id": 4,
+        "created_at": "2025-01-17T15:00:17.263Z",
+        "updated_at": "2025-01-17T15:00:17.263Z",
+        "user_email": "test34@test.com"
+    }
+]
+```
+### Оценка конкретной книги
+
+**Endpoint:** `GET /reviews/:isbn`
+
+Ответ (округляется до 2 знаков):
+
+```
+{
+    "rating": 3.33
+}
+```
+
+
+### Создание новой оценки
+
+**Endpoint:** `POST /reviews`
+
+**Body:**
+```
+{
+  "review": {
+    "isbn": "9781234567890",
+    "rating": 4
+  }
+}
+```
+
+Ответ:
+
+```
+{
+    "id": 5,
+    "isbn": "9781234567890",
+    "rating": 4,
+    "user_id": 4,
+    "created_at": "2025-01-17T15:08:11.497Z",
+    "updated_at": "2025-01-17T15:08:11.497Z",
+    "user_email": "test34@test.com"
+}
+```
+
+### Обновление оценки
+
+**Endpoint:** `PATCH /reviews/:id`
+
+**Body:**
+```
+{
+  "review": {
+    "rating": 4
+  }
+}
+```
+
+Ответ:
+
+```
+{
+    "user_id": 4,
+    "rating": 4,
+    "id": 5,
+    "isbn": "9781234567890",
+    "created_at": "2025-01-17T15:08:11.497Z",
+    "updated_at": "2025-01-17T15:09:12.115Z",
+    "user_email": "test34@test.com"
+}
+```
+### Удаление оценки
+**Endpoint:** `DELETE /reviews/:id`
+
+Ответ: 204 No Content

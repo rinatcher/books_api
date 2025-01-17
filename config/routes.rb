@@ -11,4 +11,9 @@ Rails.application.routes.draw do
 
   resources :reading_statuses, only: [:index, :show, :create, :update, :destroy]
   resources :comments, only: [:index, :show, :create, :update, :destroy]
+  resources :reviews, only: [:index, :create, :update, :destroy] do
+    collection do
+      get ':isbn', to: 'reviews#show_by_isbn', as: 'show_by_isbn'
+    end
+  end
 end
