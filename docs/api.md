@@ -192,10 +192,13 @@ id - это id самого статуса
 
 ## Comments
 
-### Все комменты юзера
+### Все комменты книги или текущего юзера
 
-**Endpoint:**
-`GET /comments`
+**Endpoints:**
+
+`GET /comments` - комменты юзера
+
+`GET /comments?isbn=123` - комменты книги
 
 **Headers:**
 ```
@@ -210,7 +213,9 @@ Authorization: Bearer <token>
         "isbn": "9780140449334",
         "content": "govno",
         "created_at": "2025-01-16T17:37:54.018Z",
-        "updated_at": "2025-01-16T17:43:45.419Z"
+        "updated_at": "2025-01-16T17:43:45.419Z",
+        "user_email": "test34@test.com"
+
     },
     {
         "id": 3,
@@ -218,7 +223,8 @@ Authorization: Bearer <token>
         "isbn": "d23e2e",
         "content": "nice",
         "created_at": "2025-01-16T17:41:55.866Z",
-        "updated_at": "2025-01-16T17:41:55.866Z"
+        "updated_at": "2025-01-16T17:41:55.866Z",
+        "user_email": "test34@test.com"
     }
 ]
 ```
@@ -236,7 +242,8 @@ id - это id самого коммента
     "isbn": "d23e2e",
     "content": "nice",
     "created_at": "2025-01-16T17:41:55.866Z",
-    "updated_at": "2025-01-16T17:41:55.866Z"
+    "updated_at": "2025-01-16T17:41:55.866Z",
+    "user_email": "test34@test.com"
 }
 ```
 
@@ -264,7 +271,8 @@ id - это id самого коммента
     "isbn": "d23e2e",
     "content": "norm",
     "created_at": "2025-01-16T17:41:55.866Z",
-    "updated_at": "2025-01-16T17:41:55.866Z"
+    "updated_at": "2025-01-16T17:41:55.866Z",
+    "user_email": "test34@test.com"
 }
 ```
 
@@ -290,7 +298,8 @@ id - это id самого коммента
     "id": 3,
     "isbn": "d23e2e",
     "created_at": "2025-01-16T17:41:55.866Z",
-    "updated_at": "2025-01-16T17:56:35.026Z"
+    "updated_at": "2025-01-16T17:56:35.026Z",
+    "user_email": "test34@test.com"
 }
 ```
 ### Удаление коммента

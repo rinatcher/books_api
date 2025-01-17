@@ -1,24 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+API для приложения "Простая платформа для книголюбов".
 
-Things you may want to cover:
+Приложение позволяет пользователям читать книги, вести списки, оставлять комментарии и обсуждать книги с другими.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Подробнее о работе API смотрите в [документации](docs/api.md).

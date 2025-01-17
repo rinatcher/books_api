@@ -2,10 +2,15 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_comment, only: [:show, :update, :destroy]
 
-  # GET /comments
+  # GET /comments?isbn=123
   def index
-    comments = current_user.comments
-    render json: comments, status: :ok
+    if params[:isbn].present?
+      comments = Comment.where(isbn: params[:isbn])
+      render json: comments, status: :ok
+    else
+      comments = current_user.comments
+      render json: comments, status: :ok
+    end
   end
 
   # GET /comments/:id
