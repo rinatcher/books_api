@@ -5,7 +5,9 @@ class CommentsController < ApplicationController
   # GET /comments?isbn=123
   def index
     if params[:isbn].present?
-      comments = Comment.where(isbn: params[:isbn])
+      comments = Comment.where(isbn: params[:isbn]).map do |comment|
+        comment.as_json.merge(current_user: comment.user_id == current_user.id)
+      end
       render json: comments, status: :ok
     else
       comments = current_user.comments
